@@ -1,0 +1,21 @@
+<!--this custom directives also need to run on server but not in web browser, so name this file as index.html-->
+<!DOCTYPE html>
+<html lang="en" ng-app="AppModule">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Directives</title>
+    <script src="lib/angular.js"></script>
+    <script src="scripts/customDirectives.js"></script>
+    <script src ="scripts2/logincontroller.js"></script>
+   
+</head>
+<body>
+    <dashboard-directive>
+
+    </dashboard-directive>
+    <p>Another directive</p>
+    <div welcomedirective =""></div>
+</body>
+</html>

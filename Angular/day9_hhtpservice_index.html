@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Module1">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Http service example</title>
+    <script src="lib/angular.js"></script>
+    <script src="scripts/httpService.js"></script>
+    <style>
+        .divclass
+        {
+            width: 300px;
+            height: 300px;
+            border :2px solid;
+            float: left;
+            margin:2rem;
+        }
+        .red
+        {
+            background-color: red;
+        }
+        .green
+        {
+            background-color: green;
+        }
+        .yellow
+        {
+            background-color: yellow;
+        }
+        .blue
+        {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <div ng-controller="Controller2">
+
+    </div>
+    <div ng-controller="Controller1">
+        <div  class="divclass" ng-repeat ="i in output" ng-class ="{'red' : $first, 'blue' : $middle, 'green' : $last}" ng-click="getDetails(i)">
+            {{i.id + ". "+ i.first_name}}
+            <br>
+        <img src=" {{i.avatar}}" alt=" {{i.avatar}}" width="20%" height="20%">
+        <br> <br>
+        <div ng-if ="display==i.id">
+          Full Name :  {{i.first_name + " "+i.last_name}}
+          <br>
+          Email : {{i.email}}
+        </div>
+        </div>
+</div>
+</body>
+</html>

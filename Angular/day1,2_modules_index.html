@@ -1,0 +1,25 @@
+<!--Day1,2  module and controller craetion-->
+<!DOCTYPE html>
+<html lang="en" ng-app="Module1">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/angular.js"></script>
+    <script src="scripts/module_controller.js"></script>
+</head>
+<body>
+    <!--ng controller is applicable to this div only-->
+    <div ng-controller="myController1">
+        <!--angular expressions-->
+        <p>Wish = {{ msg }}</p>
+        <p>5+5={{5+5}}</p>
+    </div>
+    <div ng-controller="myController2">
+        <p>Student name is {{student[1].name}} and class is {{student[1].class_no}}</p>
+    </div>
+    
+    <button onclick="check()">Click</button>
+</body>
+</html>

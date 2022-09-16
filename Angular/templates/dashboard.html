@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Http service example</title>
+   
+    
+    <style>
+        .dispalyList
+        {
+            width: 300px;
+            height: 300px;
+            border :2px solid;
+            float: left;
+            margin:2rem;
+        }
+        .red
+        {
+            background-color: red;
+        }
+        .green
+        {
+            background-color: green;
+        }
+        .yellow
+        {
+            background-color: yellow;
+        }
+        .blue
+        {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+
+    </div>
+    <div>
+        <div  class="dispalyList" ng-repeat ="i in output" ng-class ="{'red' : $first, 'blue' : $middle, 'green' : $last}" ng-click="getMyDetails(i)">
+            {{i.id + ". "+ i.first_name}}
+            <br>
+        <img src=" {{i.avatar}}" alt=" {{i.avatar}}" width="20%" height="20%">
+       
+</div>
+</body>
+</html>

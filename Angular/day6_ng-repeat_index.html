@@ -1,0 +1,26 @@
+
+
+
+<!--day6 ng-repeat and ng-options-->
+<!DOCTYPE html>
+<html lang="en" ng-app="Module1">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/angular.js"></script>
+    <script src="scripts/practice_6.js"></script>
+</head>
+<body ng-controller="Controller1">
+    <h1>ng-repeat ex</h1>
+    <label ng-repeat ="everyList in data">{{everyList.id}} <br></label>
+    <br><br>
+    <h1>displaying dropdown options Using ng-options</h1>
+    <select ng-model="dropdown" ng-options ="eachList as eachList.id for eachList in data"></select>
+    <h1>displaying dropdown options Using ng-repeat</h1>
+    <select ng-model="dropdown1">
+    <option ng-repeat="list in data">{{list.id}}</option>
+    </select>
+</body>
+</html>

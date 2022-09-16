@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app ="Module1">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Services</title>
+    <script src="lib/angular.js"></script>
+    <script src="scripts/customServices.js"></script>
+    <script src="scripts/StringCustomService.js"></script>
+</head>
+<body>
+    <div ng-controller ="customServiceController">
+    <label>Input String :</label>
+    <input type="text" ng-model="input">
+    <br><br>
+    <label>Output String :</label>
+    <input type="text" ng-model="output">
+    <br><br>
+    {{output}}
+    <button ng-click = "convertString(input)">Click</button>
+    </div>
+    
+</body>
+</html>

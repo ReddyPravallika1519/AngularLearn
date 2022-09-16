@@ -1,0 +1,62 @@
+
+1.//for date filter
+Value	Description
+format	Optional. The date format to display the date in, which can be one or more of the following:
+"yyyy" year (2016)
+"yy" year (16)
+"y" year (2016)
+"MMMM" month (January)
+"MMM" month (Jan)
+"MM" month (01)
+"M" month (1)
+"dd" day (06)
+"d" day (6)
+"EEEE" day (Tuesday)
+"EEE" day (Tue)
+"HH" hour, 00-23 (09)
+"H" hour 0-23 (9)
+"hh" hour in AM/PM, 00-12 (09)
+"h" hour in AM/PM, 0-12 (9)
+"mm" minute (05)
+"m" minute (5)
+"ss" second (05)
+"s" second (5)
+"sss" millisecond (035)
+"a" (AM/PM)
+"Z" timezone (from -1200 to +1200)
+"ww" week (00-53)
+"w" week (0-53)
+"G" era (AD)
+"GG" era (AD)
+"GGG" era (AD)
+"GGGG" era (Anno Domini)
+
+
+2.//ui-router
+https://plnkr.co/edit/FYxpaHpKgvpEu6f1TZ7l?p=preview&preview
+
+3.//Run html files through local servers
+npm install    ---> in cmd prompt
+npm start     ---->to start the server
+run these cmds where the index.html is present
+
+
+4. //add this package.json while running npm install cmd
+package.json
+{
+  "name": "Demo",
+  "version": "1.0.0",
+  "description": "demo project.",
+  "scripts": {
+    "lite": "lite-server --port 8080",
+    "start": "npm run lite"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^1.3.1"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,0 +1,74 @@
+<!--day5 from validations-->
+<!DOCTYPE html>
+<html lang="en" ng-app="Module1">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis</title>
+    <script src="lib/angular.js"></script>
+    <script src="scripts/diagnosis_form.js"></script>
+    <style>
+        input[type="text"].ng-invalid
+        {
+            border:2px solid red;
+        }
+        input[type="radio"].ng-invalid
+        {
+            border:2px solid red;
+        }
+        input[type="date"].ng-invalid
+        {
+            border:2px solid red;
+        }
+        select.ng-invalid
+        {
+            border:2px solid red;
+        }
+        textarea.ng-invalid 
+        {
+            border:2px solid red;
+        }
+    </style>
+</head>
+<body ng-controller="Controller1">
+    <form name="Diagform">
+        <label>Diagnosis Type</label><br>
+        <input type="radio" name="dtype" value="p" ng-model="forms.dtype" ng-required="true">
+        <label>Primary</label>
+        <input type="radio" name="dtype" value="s" ng-model="forms.dtype" ng-required="true">
+        <label>Secondary</label><br><br>
+
+        <input type="checkbox" ng-model="forms.check" ng-true-value="'y'" ng-false-value="'n'">
+        <label>Non Standard</label><br><br>
+        <label>Diagnosis</label><br><br>
+        <select ng-model="forms.standard" ng-required="true" ng-if="forms.check!='y'"
+        ng-options="i as i.name for i in diagnosisList">
+        </select>
+        <input type="text" ng-model="forms.standard.id" ng-readonly="true" ng-if="forms.check!='y'" ng-required="true" >
+        <input type="text" ng-model="forms.nonstandard" ng-if="forms.check=='y'" ng-required="true"><br><br>
+
+        <label>Onset</label><br><br>
+        <input type="radio" name="onset" value="date" ng-model="forms.onsetradio"  ng-checked="true">
+        <label>Date</label>
+        <input type="radio" name="onset" value="year" ng-model="forms.onsetradio">
+        <label>Year</label><br><br>
+        <input type="date" ng-model="forms.datefield" ng-disabled="forms.onsetradio=='year'" ng-required="true">
+        <select ng-model="forms.yearfield" ng-options="year as year for year in yearList"  ng-disabled="forms.onsetradio!='year'" ng-required="forms.onsetradio=='year'">
+        </select>
+        <br><br>
+
+        <label>Remarks</label><br><br>
+        <textarea name="tarea" cols="80" rows="3" ng-model="forms.remarks" ng-required="forms.progressCheck=='y'" 
+        ng-maxlength="5" ng-readonly="Diagform.tarea.$invalid"></textarea>
+        <br><br>
+
+        <input type="checkbox" ng-model="forms.progressCheck" ng-true-value="'y'" ng-false-value="'n'">
+        <label>Send to Progress</label>
+        <br><br>
+
+        <button ng-model ="savebtn" ng-disabled="Diagform.$invalid" ng-click="saveFunc()">Save</button>
+        <button ng-model ="resetbtn"  ng-click="resetFunc()">Reset</button>       
+    </form>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!--run this file using npm start cmd in terrminal/cmd-->
+<!DOCTYPE html>
+<html lang="en" ng-app="Module1">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <script src="lib/angular.js"></script>
+    <!--for ng-route
+    for routing angular-route.js library has to be added
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="scripts/mainPageController_ngRoute.js"></script>
+    -->
+
+     <!--for ui-route-->
+     <script src = "
+     https://unpkg.com/@uirouter/angularjs@1.0.7/release/angular-ui-router.min.js">
+     </script>
+    <script src="scripts/mainPageController_uiRoute.js"></script>
+    <script src="templates/httpService1.js"></script>
+    <style>
+        body
+        {
+            margin: 0;
+        }
+        .mainheading
+        {
+            background-color: grey;
+            padding: 3rem;
+            margin: 0;
+            text-align: center;
+            border-bottom: 3px solid;
+        }
+        ul
+        {
+            list-style-type: none;
+           
+        }
+        ul li 
+        {
+            padding: 0.5rem;
+        }
+        ul li a
+        {
+            text-decoration: none;
+            font-size: 2rem;
+            color: blue;
+        }
+		.divclass
+		{
+			width: 15%;
+			background-color: grey;
+			float: left;
+			height: 100vh;
+			
+		}
+		
+
+    </style>
+    
+</head>
+    <body>
+        <!--
+        <h1 class="mainheading">This is Main heading for all Pages</h1>
+		<div class="divclass">
+			<ul>
+				<li><a href="#!login">Login</a></li>
+				<li><a href="#!home">Home</a></li>
+				<li><a href="#!register">Register</a></li>
+			</ul>
+		</div>
+		<div class="divclass2">	
+			<div ng-view></div>
+		</div>
+    -->
+
+        <h1 class="mainheading">This is Main heading for all Pages</h1>
+		<div class="divclass">
+			<ul>
+				<li  ><a ui-sref="login">Login</a></li>
+				<li  ><a ui-sref="home">Home</a></li>
+				<li  ><a ui-sref="register">Register</a></li>
+                <li><a ui-sref="dashboard">Dashboard</a></li>
+			</ul>
+		</div>
+		<div class="divclass2">	
+			<div ui-view></div>
+		</div>
+        
+    </body>
+</html>

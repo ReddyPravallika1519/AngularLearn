@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Module1">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/angular.js"></script>
+    <script src="scripts/filters.js"></script>
+</head>
+<body ng-controller="Controller1">
+    <h1>Before adding filters</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+                <th>DOB</th>
+                <th>Bonus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in data">
+                <th>{{item.id}}</th>
+                <th>{{item.person }}</th>
+                <th>{{item.gender}}</th>
+                <th>{{item.Salary}}</th>
+                <th>{{item.dob}}</th>
+                <th>{{item.bonus}}</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--date,number,currency,uppercase,lowercase,limitTo,orderby filters are used in this example-->
+    <h1>After adding filters</h1>
+    <div>
+      <label>Select no. of rows to display : </label>
+      <input type="number" step="1" min="1" max="9" ng-model="limitRows"><br><br>
+      <label>Sort : <span ng-if="radiosort!='normal'">{{sortOption}}</span> </label>
+      <br>
+        <input type="radio"  name="sortradio" value="normal" ng-model="radiosort" ng-checked="true">
+        <label>Normal</label>
+        <input type="radio"  name="sortradio" value="asc" ng-model="radiosort">
+        <label>Ascending</label>
+        <input type="radio"  name="sortradio" value="desc" ng-model="radiosort">
+        <label>Descending</label>
+        <br><br>
+        <!--ng-if is not working here so I used ng-show-->
+       <select ng-model="sortOption" ng-show="radiosort=='asc'">
+        <option value="+id">Sort by id Asc</option>
+        <option value="+person">Sort by name asc</option>
+        <option value="+gender">Sort by gender asc</option>
+        <option value="+dob">Sort by dob asc</option>
+        <option value="+Salary">Sort by salary asc</option>
+      </select>
+
+      <select ng-model="sortOption" ng-show="radiosort=='desc'">
+        <option value="-id">Sort by id Desc</option>
+        <option value="-person">Sort by name desc</option>
+        <option value="-gender">Sort by gender desc</option>
+        <option value="-dob">Sort by dob desc</option>
+        <option value="-Salary">Sort by salary desc</option>
+      </select>
+    </div><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+                <th>DOB</th>
+                <th>Bonus</th>
+            </tr>
+        </thead>
+        <tbody>
+           <!-- <tr ng-repeat="item in data |  orderBy: sortOption">-->
+            <tr ng-repeat="item in data |  limitTo : limitRows | orderBy: sortOption" ng-hide="radiosort=='normal'">
+                <th>{{item.id}}</th>
+                <th>{{item.person | uppercase }}</th>
+                <th>{{item.gender | lowercase}}</th>
+                <th>{{item.Salary | number :2}}</th>
+                <th>{{item.dob | date :  "dd-MMM-yyyy"}}</th>
+                <th>{{item.bonus | currency : "$"}}</th>
+            </tr>
+
+            <tr ng-repeat="item in data |  limitTo : limitRows" ng-hide="radiosort!='normal'">
+                <th>{{item.id}}</th>
+                <th>{{item.person | uppercase }}</th>
+                <th>{{item.gender | lowercase}}</th>
+                <th>{{item.Salary | number :2}}</th>
+                <th>{{item.dob | date :  "dd-MMM-yyyy"}}</th>
+                <th>{{item.bonus | currency : "$"}}</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--sort data by clicking on header using orderby-->
+    <h1>Sorting table data based on headers</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th ng-click="sorting('id')">Id</th>
+                <th ng-click="sorting('person')">Name</th>
+                <th ng-click="sorting('gender')">Gender</th>
+                <th ng-click="sorting('Salary')">Salary</th>
+                <th ng-click="sorting('dob')">DOB</th>
+                <th ng-click="sorting('bonus')">Bonus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in data | orderBy : header : boolVal">
+                <th>{{item.id}}</th>
+                <th>{{item.person }}</th>
+                <th>{{item.gender}}</th>
+                <th>{{item.Salary}}</th>
+                <th>{{item.dob}}</th>
+                <th>{{item.bonus}}</th>
+            </tr>
+        </tbody>
+    </table>
+
+<label>{{boolVal+header}}</label>
+
+    <!--Usuage of filter filter for search-->
+    <h1>filter/search filter</h1>
+    <!--search in all columns-->
+    <label>Search Data : </label><input type="text" placeholder="search here" ng-model="searchbar"><br><br>
+    <!--to search in specified column-->
+    <!--<label>Search Data : </label><input type="text" placeholder="search here" ng-model="searchbar.person"><br><br>-->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+                <th>DOB</th>
+                <th>Bonus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in data | filter : searchbar">
+                <th>{{item.id}}</th>
+                <th>{{item.person }}</th>
+                <th>{{item.gender}}</th>
+                <th>{{item.Salary}}</th>
+                <th>{{item.dob}}</th>
+                <th>{{item.bonus}}</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+
+    <!--custom filters-->
+    <h1>Custom Filter</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+                <th>DOB</th>
+                <th>Bonus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in data">
+                <th>{{item.id}}</th>
+                <th>{{item.person }}</th>
+                <th>{{item.gender | customgender}}</th>
+                <th>{{item.Salary}}</th>
+                <th>{{item.dob}}</th>
+                <th>{{item.bonus}}</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>Custom Filter2 : Retrive rows if given string matches with name or city </h1>
+    Search : <input type="text" ng-model ="searchval" placeholder="search person name or city"> <br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+                <th>DOB</th>
+                <th>Bonus</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in data | searchNameOrCity : searchval">
+                <th>{{item.id}}</th>
+                <th>{{item.person }}</th>
+                <th>{{item.gender}}</th>
+                <th>{{item.Salary}}</th>
+                <th>{{item.dob}}</th>
+                <th>{{item.bonus}}</th>
+                <th>{{item.city}}</th>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!--
+    <input type="text" ng-model="uname">
+    <label>{{uname}}</label><br><br>
+    <button ng-click="clicked(uname)">Click btn</button>
+    -->
+   
+</body>
+</html>

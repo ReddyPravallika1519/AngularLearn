@@ -1,0 +1,110 @@
+<!--day3,4 :ng-model-->
+
+<!DOCTYPE html>
+<html lang="en" ng-app="Module1">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/angular.js"></script>
+    <script src="scripts/directives_learn.js"></script>
+    <style>
+        .red
+        {
+            background-color: red;
+        }
+        .green
+        {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>ng-bind Example</h1>
+    <div ng-controller="myController1">
+    <p> Name : <span ng-bind ="display.name"></span></p>  <!--using ng-bind-->
+    <p> Name : {{display.name}}</p> <!--using angular exp-->
+    </div>
+    <div ng-controller="myController2">
+        <h1>ng-model Example</h1>
+        <label>Name : </label>
+        <input type="text" ng-model="display.name"/><br><br>
+        <label>Id : </label>
+        <input type="text" ng-model="display.id"/><br><br>
+        <label>Marks : </label>
+        <input type="text" ng-model="display.marks"/><br><br>
+
+        <label>Name : </label>
+        <label ng-bind="display.name"></label><br><br>
+        <label>Id : </label>
+        <label ng-bind="display.id"></label><br><br>
+        <label>Marks : </label>
+        <label>{{display.marks}}</label><br><br>
+    
+    
+        <h1>ng-click Example</h1>
+        <button ng-click="saved()">Save</button>
+
+        <h1>ng-change Example</h1>
+        <input type="text" ng-model ="display.name" ng-change ="changed()">
+
+        <h1>ng-show Example</h1>
+        <input type="text" ng-model ="display.name">
+        <p ng-show="display.name =='hi'">para for ng-show</p>
+
+        <h1>ng-hide Example</h1>
+        <input type="text" ng-model ="display.name">
+        <p ng-hide="display.name =='hi'">para for ng-hide</p>
+
+        <h1>ng-if Example</h1>
+        <input type="text" ng-model ="display.name">
+        <p ng-if="display.name =='hi'">para for ng-if</p>
+    </div>
+
+        <h1>ng-class</h1>
+        <input type="text" ng-model="dat.id"><br><br>
+        <div style="height: 200px;width:200px;border: 1px solid black;" ng-class="{'red':dat.id=='31','green':dat.id=='32'}">
+        
+        </div>
+
+        <h1>Form Creation in Angular Js</h1>
+        <label>UserName : </label>
+       <!--here data is storing as like object. It is best practice and also we wont problem if any loading issues-->
+        <input type="text" ng-model="forms.uname"><br><br>
+        <label>Password : </label>
+        <!--data is storing as like normal var-->
+        <input type="password" ng-model="pswd"><br><br>
+        <label>Subject : </label>
+        <select ng-model="forms.dropdown">
+            <option>Maths</option>
+            <option>Science</option>
+            <option>Engkish</option>
+        </select><br><br>
+        <label>Female</label>
+        <input type="radio" name="gender" value="female" ng-model="forms.gender">
+        <label>Male</label>
+        <input type="radio" name="gender" value="male" ng-model="forms.gender"><br><br>
+        default output is true or falsse for ng-model if used for checkbox, but to display true value as we like we need to use ng-true-value
+        <input type="checkbox" value="accept" ng-model="forms.check" ng-true-value="'Accepted'" ng-false-value="'Not Accepted'">
+        <label>Accept Terms</label>
+        <input type="checkbox" value="accept1" ng-model="forms.check1" ng-true-value="'Accepted'" ng-false-value="'Not Accepted'">
+        <label>Accept Conditions</label>
+        
+
+        <h1>Form display</h1>
+        <label>UserName : </label>
+        <label>{{forms.uname}}</label><br><br>
+        <label>Password : </label>
+        <label>{{pswd}}</label><br><br>
+        <label>Subject : </label>
+        <label>{{forms.dropdown}}</label><br><br>
+        <label>Gender : </label>
+        <label>{{forms.gender}}</label><br><br>
+        <label>Terms : </label>
+        <label>{{forms.check}}</label><br><br>
+        <label>Conditions : </label>
+        <label>{{forms.check1}}</label><br><br>
+
+</body>
+</html>

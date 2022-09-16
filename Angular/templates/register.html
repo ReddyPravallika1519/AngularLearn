@@ -1,0 +1,8 @@
+    <h1>Registeration Page</h1>
+    <label for="">Username : </label>
+    <input type="text" placeholder="enter username" ng-model="data.uname"><br><br>
+    <label for="">Password : </label>
+    <input type="password" placeholder="enter password" ng-model="data.pswd"><br><br>
+    <label for="">ConfirmPassword : </label>
+    <input type="password" placeholder="enter password again" ng-model="data.cpswd"><br><br>
+    <button ng-click="register(data.pswd, data.cpswd)">Register</button>
